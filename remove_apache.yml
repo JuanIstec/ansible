@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repository #Não é necessário estar aqui para a desinstalação
+    apt:
+      update_cache: yes
+
+  - name: remove apache2
+    apt:
+      name: apache2
+      state: absent
