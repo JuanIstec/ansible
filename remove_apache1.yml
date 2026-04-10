@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repository
+    apt:
+      update_cache: yes
+    when: ansible_distribution in ["Ubuntu", "Debian"]
+
+  - name: install apache2 package
+    apt:
+      name: apache2
+      state: absent
+    when: ansible_distribution in ["Ubuntu", "Debian"]
+
+  - name: update repository centos
+    dnf:
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: install apache no centos
+    dnf:
+      name: httpd
+      state: absent
+    when: ansible_distribution == "CentOS"
