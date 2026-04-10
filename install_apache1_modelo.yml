@@ -4,12 +4,14 @@
   tasks:
 
   - name: install update (CentOS)
+    tags: update
     dnf:
       update_only: yes
       update_cache: true
     when: ansible_distribution == "CentOS"
 
   - name: install update Debian e Ubuntu
+    tags: update
     apt:
       upgrade: dist
       update_cache: true
@@ -20,6 +22,7 @@
   tasks:
 
   - name: install apache2 package ubuntu e debian
+    tags: apache
     apt:
       name:
         - apache2
