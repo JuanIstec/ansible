@@ -1,3 +1,6 @@
-juan2@192.168.3.129 apache_package=apache2
-juan3@192.168.3.132 apache_package=apache2
-juan4@192.168.3.133 apache_package=httpd
+[web_servers]
+juan2@192.168.3.129
+juan3@192.168.3.132
+
+[server_1]
+juan4@192.168.3.133

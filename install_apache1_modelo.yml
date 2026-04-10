@@ -1,0 +1,27 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: install update (CentOS)
+    dnf:
+      update_only: yes
+      update_cache: true
+    when: ansible_distribution == "CentOS"
+
+  - name: install update Debian e Ubuntu
+    apt:
+      upgrade: dist
+      update_cache: true
+    when: ansible_distribution in ["Ubuntu", "Debian"]
+
+- hosts: web_servers
+  become: true
+  tasks:
+
+  - name: install apache2 package ubuntu e debian
+    apt:
+      name:
+        - apache2
+      state: latest
+    when: ansible_distribution in ["Ubuntu", "Debian"]
